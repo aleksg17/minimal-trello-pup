@@ -8,7 +8,6 @@ function IFrameConnector(props: {
 }) {
   const { trelloCapabilities, appKey, appName } = props;
   useEffect(() => {
-    console.log(trelloCapabilities, appKey, appName);
     window.TrelloPowerUp.initialize(trelloCapabilities, {
       appKey,
       appName,

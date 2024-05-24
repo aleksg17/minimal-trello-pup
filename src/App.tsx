@@ -3,7 +3,7 @@ import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } 
 import { capabilities } from './trello-setup/capabilities';
 import IFrameConnector from './trello-setup/components/iframe-connector';
 import { TrelloPowerupProvider } from './trello-setup/contexts/trello-powerup-context';
-import Authorize from './trello-setup/components/authorize';
+import Authorize from './screens/authorize';
 import MainModal from './screens/main-modal';
 
 function TrelloWrapper({ children }: { children: React.ReactElement }) {

@@ -1,5 +1,5 @@
 import { useLayoutEffect } from "react";
-import { useTrelloPowerupContext } from "../contexts/trello-powerup-context";
+import { useTrelloPowerupContext } from "../trello-setup/contexts/trello-powerup-context";
 
 interface IOptions {
   heading: string;
@@ -8,30 +8,25 @@ interface IOptions {
   imageStyle: React.CSSProperties;
 }
 
-// const Container = styled.div`
-//     background: ${tokens["elevation.surface"]};
-//     text-align: center;
-//     padding: ${tokens["space.200"]};
-//     & > *:not(:first-child) {
-//         margin-top: ${tokens["space.200"]}
-//     }
-// `
-
 function Authorize({ heading, headingStyle, imageSrc, imageStyle }: IOptions) {
   const { authorize, appName, trelloIframe } =
     useTrelloPowerupContext();
 
   useLayoutEffect(() => {
-    // trelloIframe.sizeTo("body");
-    trelloIframe.sizeTo(216);
+    trelloIframe.sizeTo("body");
   }, [trelloIframe]);
 
   return (
     <div
-    // rowGap={4}
-    // display={"flex"}
-    // flexDirection={"column"}
-    // alignItems={"center"}
+    style={{
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      gap: "0.5rem",
+      width: "216px",
+      height: "216px",
+    }}
     >
       <h1 style={headingStyle}>{heading}</h1>
       <img src={imageSrc} style={imageStyle} />

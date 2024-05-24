@@ -46,12 +46,15 @@ function TrelloPowerupProvider({
   useEffect(() => {
     (async () => {
       try {
-        const [_isAuthorized] = await Promise.all([
+        const [_isAuthorized, _token] = await Promise.all([
           trelloIframe.getRestApi().isAuthorized(),
+          trelloIframe.getRestApi().getToken()
         ]);
+        
+        console.log("trelloIframe.getRestApi().isAuthorized(): ", _isAuthorized)
+        console.log("trelloIframe.getRestApi().getToken(): ", _token)
 
         if (_isAuthorized) {
-          const _token = await trelloIframe.getRestApi().getToken();
           setToken(_token);
         }
       } catch (e) {
@@ -75,7 +78,8 @@ function TrelloPowerupProvider({
 
   const revokeAuth = useCallback(async () => {
     try {
-      await trelloIframe.getRestApi().clearToken();
+      const isTokenCleared = await trelloIframe.getRestApi().clearToken();
+      console.log("revoke result: ", isTokenCleared)
       setToken(undefined);
     } catch (e) {
       console.error(e)

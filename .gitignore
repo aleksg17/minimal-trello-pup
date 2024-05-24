@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# localhost cert for local https
+localhost.crt
+localhost.key
+
+# environmental variables
+.env*

@@ -14,6 +14,8 @@ export const capabilities = (
   "board-buttons": async (t) => {
     const isAuthorized = await t.getRestApi().isAuthorized();
 
+    console.log("board-buttons capability: ", isAuthorized);
+
     if (!isAuthorized) {
       return [
         {
@@ -33,7 +35,7 @@ export const capabilities = (
             x.popup({
               title: `Authorize ${options.appName}`,
               url: `/authorize`,
-              height: 240,
+              height: 216,
             });
           },
         },
@@ -48,11 +50,6 @@ export const capabilities = (
           light: import.meta.env.VITE_BASE_URL + "/test_icon.svg",
         },
         callback: async (x) => {
-          const signed = t.isMemberSignedIn();
-          const jwt = await t.jwt({
-            state: JSON.stringify({ hello: "world" }),
-          });
-          console.log("board-buttons", signed, jwt);
           x.modal({
             title: `Authorized!`,
             url: `/authorized`,
