@@ -50,9 +50,9 @@ function TrelloPowerupProvider({
           trelloIframe.getRestApi().isAuthorized(),
           trelloIframe.getRestApi().getToken()
         ]);
-        
+
         console.log("trelloIframe.getRestApi().isAuthorized(): ", _isAuthorized)
-        console.log("trelloIframe.getRestApi().getToken(): ", _token)
+        console.log("trelloIframe.getRestApi().getToken(): ", _token?.slice(0,-40) + Array(40).fill("*").join(""))
 
         if (_isAuthorized) {
           setToken(_token);

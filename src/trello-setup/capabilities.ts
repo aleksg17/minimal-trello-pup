@@ -14,7 +14,7 @@ export const capabilities = (
   "board-buttons": async (t) => {
     const isAuthorized = await t.getRestApi().isAuthorized();
 
-    console.log("board-buttons capability: ", isAuthorized);
+    console.log("board-buttons capability (t.getRestApi().isAuthorized()): ", isAuthorized);
 
     if (!isAuthorized) {
       return [
